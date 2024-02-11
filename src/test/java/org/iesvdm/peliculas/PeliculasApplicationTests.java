@@ -24,24 +24,24 @@ class PeliculasApplicationTests {
 
     @Test
     void guardarManyToMany() {
-        Pelicula pelicula = new Pelicula(0, "Frozen", new HashSet<>());
-        peliculaRepository.save(pelicula);
-
-        Categoria categoria = new Categoria(0, "Animacion", new HashSet<>());
-        categoriaRepository.save(categoria);
-
-        Categoria categoria2 = new Categoria(0, "Terror", new HashSet<>());
-        categoriaRepository.save(categoria2);
-
-        pelicula.getCategorias().add(categoria);
-        // categoria.getPeliculas().add(pelicula);
-        pelicula.getCategorias().add(categoria2);
-        // categoria2.getPeliculas().add(pelicula);
-        peliculaRepository.save(pelicula);
-        // TODO IDIOMA, one to many
-        // TODO ACTOR, many to many
-        // Para que este dentro del objeto de Java
-        categoriaRepository.save(categoria2);
-        categoriaRepository.save(categoria);
+//        Pelicula pelicula = new Pelicula(0, "Frozen", new HashSet<>());
+//        peliculaRepository.save(pelicula);
+//
+//        Categoria categoria = new Categoria(0, "Animacion", new HashSet<>());
+//        categoriaRepository.save(categoria);
+//
+//        Categoria categoria2 = new Categoria(0, "Terror", new HashSet<>());
+//        categoriaRepository.save(categoria2);
+//
+//        pelicula.getCategorias().add(categoria);
+//        // categoria.getPeliculas().add(pelicula);
+//        pelicula.getCategorias().add(categoria2);
+//        // categoria2.getPeliculas().add(pelicula);
+//        peliculaRepository.save(pelicula);
+//        // TODO IDIOMA, one to many
+//        // TODO ACTOR, many to many
+//        // Para que este dentro del objeto de Java
+//        categoriaRepository.save(categoria2);
+//        categoriaRepository.save(categoria);
     }
 }

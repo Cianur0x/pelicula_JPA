@@ -21,6 +21,10 @@ public class Categoria {
     private long id;
 
     private String nombre;
+    /**
+     * On the target side, we only have to provide the name of the field,
+     * which maps the relationship.
+     */
 
     @ManyToMany(mappedBy = "categorias")
     Set<Pelicula> peliculas = new HashSet<>();
