@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Data
@@ -17,20 +18,15 @@ import java.util.Date;
 public class Idioma {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_idioma")
     private Long id;
 
     private String nombre;
 
-    @Column(name = "ultima_actualizacion")
-    @JsonFormat(pattern = "yyyy-MM-dd-HH:mm:ss", shape = JsonFormat.Shape.STRING)
-    private Date ultimaActualizacion;
+//    @Column(name = "ultima_actualizacion")
+//    @JsonFormat(pattern = "yyyy-MM-dd-HH:mm:ss", shape = JsonFormat.Shape.STRING)
+//    private Date ultimaActualizacion;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    // @JoinColumn(name = "id_idioma_original")
-    private Pelicula pelicula;
+    @OneToMany(mappedBy = "idioma", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private Set<Pelicula> peliculas;
 
-    // Agrega la columna clave foránea
-    @Column(name = "id_idioma_original")
-    private Long id_idioma_original;
 }

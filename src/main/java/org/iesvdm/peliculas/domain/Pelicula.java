@@ -27,28 +27,28 @@ public class Pelicula {
 
     private String descripcion;
 
-    @Column(name = "anyo_lanzamiento")
-    @JsonFormat(pattern = "yyyy", shape = JsonFormat.Shape.STRING)
-    private Date anyoLanzamiento;
-
-    @Column(name = "duracion_alquiler")
-    private int duracionAlquiler;
-
-    @Column(name = "rental_rate")
-    private BigDecimal rentalRate;
-    private int duracion;
-
-    @Column(name = "replacement_cost")
-    private BigDecimal replacementCost;
-
-    private String clasificacion;
-
-    @Column(name = "caracteristicas_especiales")
-    private String caracteristicasEspeciales;
-
-    @Column(name = "ultima_actualizacion")
-    @JsonFormat(pattern = "yyyy-MM-dd-HH:mm:ss", shape = JsonFormat.Shape.STRING)
-    private Date ultimaActualizacion;
+//    @Column(name = "anyo_lanzamiento")
+//    @JsonFormat(pattern = "yyyy", shape = JsonFormat.Shape.STRING)
+//    private Date anyoLanzamiento;
+//
+//    @Column(name = "duracion_alquiler")
+//    private int duracionAlquiler;
+//
+//    @Column(name = "rental_rate")
+//    private BigDecimal rentalRate;
+//    private int duracion;
+//
+//    @Column(name = "replacement_cost")
+//    private BigDecimal replacementCost;
+//
+//    private String clasificacion;
+//
+//    @Column(name = "caracteristicas_especiales")
+//    private String caracteristicasEspeciales;
+//
+//    @Column(name = "ultima_actualizacion")
+//    @JsonFormat(pattern = "yyyy-MM-dd-HH:mm:ss", shape = JsonFormat.Shape.STRING)
+//    private Date ultimaActualizacion;
     /**
      * Note that using @JoinTable or even @JoinColumn isn’t required.
      * JPA will generate the table and column names for us.
@@ -58,14 +58,10 @@ public class Pelicula {
     @ManyToMany
     private Set<Categoria> categorias = new HashSet<>();
 
-    @OneToMany(mappedBy = "pelicula")
-    private Set<Idioma> idiomas;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Idioma idioma;
 
-    @OneToOne
-    @JoinColumn(name = "id_idioma_original")
-    private Idioma idiomaOriginal;
-
-    @ManyToMany
+    @ManyToMany(mappedBy = "peliculas") //si no se pone el mapped se crean dos tablas
     private Set<Actor> actores;
 
 }
