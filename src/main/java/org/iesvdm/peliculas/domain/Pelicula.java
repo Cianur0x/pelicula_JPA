@@ -2,10 +2,7 @@ package org.iesvdm.peliculas.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -55,12 +52,14 @@ public class Pelicula {
      * However, the strategy JPA uses won’t always match the naming conventions we use.
      * So, we need the possibility to configure table and column names.
      */
+    @ToString.Exclude
     @ManyToMany
     private Set<Categoria> categorias = new HashSet<>();
 
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     private Idioma idioma;
-
+    @ToString.Exclude
     @ManyToMany(mappedBy = "peliculas") //si no se pone el mapped se crean dos tablas
     private Set<Actor> actores;
 
